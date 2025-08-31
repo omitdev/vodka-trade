@@ -14,7 +14,7 @@ export const metadata = {
     url: "https://vodkatrade.io",
     images: [
       {
-        url: "https://vodkatrade.io/vodkatrade-preview.jpg",
+        url: "https://vodkatrade.io/vodkatrade-preview.png",
         alt: "VodkaTrade - TON’s Fastest Trading Bot",
       },
     ],
@@ -24,7 +24,7 @@ export const metadata = {
     title: "VodkaTrade - TON’s Fastest Trading Bot",
     description:
       "Discover VodkaTrade: the ultimate sniper trading bot on TON. Private nodes, lightning speed, Telegram-native. Trade faster, smarter, and dominate every launch.",
-    images: ["https://vodkatrade.io/vodkatrade-preview.jpg"],
+    images: ["https://vodkatrade.io/vodkatrade-preview.png"],
   },
 };
 
