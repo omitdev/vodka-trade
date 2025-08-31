@@ -15,16 +15,18 @@ const partners = [
 
 function Pill({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="rounded-full p-[1px] [background:linear-gradient(180deg,rgba(255,255,255,.32),rgba(153,153,153,.10))]">
-      <div className="flex items-center gap-2 rounded-full bg-[linear-gradient(180deg,#0B1630_0%,#0A1834_100%)] px-4 py-2 ring-1 ring-white/10 shadow">
+    <div className="shrink-0 rounded-full p-[1px] [background:linear-gradient(180deg,rgba(255,255,255,.32),rgba(153,153,153,.10))]">
+      <div className="flex items-center gap-2 rounded-full bg-[linear-gradient(180deg,#0B1630_0%,#0A1834_100%)] px-3 py-1.5 ring-1 ring-white/10 shadow">
         <Image
           src={src}
           alt={alt}
           width={90}
           height={24}
-          className="h-6 w-auto"
+          className="h-5 w-auto sm:h-6"
         />
-        <span className="text-sm text-white/85">{alt}</span>
+        <span className="hidden sm:inline text-xs sm:text-sm text-white/85 whitespace-nowrap">
+          {alt}
+        </span>
       </div>
     </div>
   );
@@ -32,14 +34,13 @@ function Pill({ src, alt }: { src: string; alt: string }) {
 
 function MarqueeLTR({
   items,
-  duration = 22, // tăng giảm tốc độ
+  duration = 26,
 }: {
   items: { src: string; alt: string }[];
   duration?: number;
 }) {
-  // Một hàng item
   const Row = (
-    <div className="flex items-center ml-6 gap-6">
+    <div className="flex items-center gap-1 ml-1 lg:ml-6 lg:gap-6 whitespace-nowrap">
       {items.map((p) => (
         <Pill key={p.alt} {...p} />
       ))}
@@ -47,31 +48,31 @@ function MarqueeLTR({
   );
 
   return (
-    <div className="relative overflow-hidden">
-      {/* fade mép */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[var(--background,#0d0c16)] to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[var(--background,#0d0c16)] to-transparent" />
+    <div className="relative overflow-hidden w-full min-h-[48px] sm:min-h-[56px]">
+      {/* fades */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-24 bg-gradient-to-r from-[var(--background,#0d0c16)] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-24 bg-gradient-to-l from-[var(--background,#0d0c16)] to-transparent" />
 
-      {/* A: bắt đầu hiển thị đủ, trượt sang phải */}
       <motion.div
         className="absolute left-0 top-0 will-change-transform"
+        style={{ display: "inline-flex" }}
         animate={{ x: ["0%", "100%"] }}
         transition={{ duration, ease: "linear", repeat: Infinity }}
       >
         {Row}
       </motion.div>
 
-      {/* B: đứng ngoài màn trái, đi vào để nối mạch (aria-hidden để tránh đọc lặp) */}
       <motion.div
         aria-hidden
         className="absolute left-0 top-0 will-change-transform"
+        style={{ display: "inline-flex" }}
         animate={{ x: ["-100%", "0%"] }}
         transition={{ duration, ease: "linear", repeat: Infinity }}
       >
         {Row}
       </motion.div>
 
-      {/* giữ chiều cao container */}
+      {/* giữ chiều cao */}
       <div className="invisible">{Row}</div>
     </div>
   );

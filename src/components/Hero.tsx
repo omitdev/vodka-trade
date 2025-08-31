@@ -11,7 +11,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate flex min-h-[92vh] items-center justify-center overflow-hidden pt-18 text-center"
+      className="relative isolate flex min-h-[92vh] items-center justify-center overflow-hidden pt-16 text-center"
     >
       {/* BG */}
       <Image

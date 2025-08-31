@@ -69,7 +69,7 @@ export default function SectionLaunchpads() {
         </div>
       </div>
       {/* Referral banner */}
-      <div className="mx-auto max-w-5xl px-6 relative -mt-[90px] md:-mt-[112px] z-20">
+      <div className="mx-auto max-w-5xl px-6 relative -mt-[80px] md:-mt-[112px] z-20">
         <div className="relative isolate rounded-2xl overflow-visible shadow-[0_10px_36px_rgba(2,10,28,.45)]">
           {/* BG base + Angular Gradient (không viền) */}
           <div
@@ -90,7 +90,7 @@ export default function SectionLaunchpads() {
           />
 
           {/* Ảnh tràn ra ngoài bên phải */}
-          <div className="pointer-events-none absolute left-4 top-3/5 z-10 h-[140px] w-[240px] sm:h-[240px] sm:w-[420px] sm:left-auto sm:-right-4 -translate-y-1/2">
+          <div className="pointer-events-none absolute left-4 top-3/5 z-10 h-[140px] w-[280px] sm:h-[240px] sm:w-[420px] sm:left-auto sm:-right-4 -translate-y-1/2">
             <Image
               src="/illus/referral.png"
               alt="Referral Illustration"

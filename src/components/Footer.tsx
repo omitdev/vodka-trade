@@ -39,9 +39,9 @@ export default function Footer() {
               />
               <span className="font-semibold text-white">VODKATRADE</span>
             </div>
-            <p className="mt-4 text-xs leading-6 text-white/55 font-san">
+            <p className="mt-4 text-xs leading-6 text-white/55 font-sans">
               © 2025 VodkaTrade team.
-              <br className="font-san" />
+              <br className="font-sans" />
               All Rights Reserved.
             </p>
           </div>
@@ -53,7 +53,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 {features.map(([href, label]) => (
                   <li key={label}>
-                    <Link href={href} className="hover:text-white font-san">
+                    <Link href={href} className="hover:text-white font-sans">
                       {label}
                     </Link>
                   </li>
@@ -68,7 +68,7 @@ export default function Footer() {
                   <li key={label}>
                     <Link
                       href={href}
-                      className="hover:text-white font-san"
+                      className="hover:text-white font-sans"
                       target={href.startsWith("http") ? "_blank" : undefined}
                       rel={
                         href.startsWith("http")
@@ -92,7 +92,7 @@ export default function Footer() {
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-white font-san"
+                      className="hover:text-white font-sans"
                     >
                       {label}
                     </a>
