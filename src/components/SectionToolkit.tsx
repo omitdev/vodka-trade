@@ -96,7 +96,7 @@ export default function SectionToolkit() {
         className="absolute inset-0 -z-10 object-cover"
       />
       {/* lớp tối để chữ dễ đọc (tuỳ chỉnh opacity) */}
-      <div className="absolute inset-0 -z-10 bg-[#070b14]/60" />
+      <div className="absolute inset-0 -z-20 bg-[#0d0c16]" />
 
       <div className="text-center">
         <BrandPill />

@@ -16,7 +16,7 @@ export default function Footer() {
   ];
   const resources = [
     ["/docs", "Docs"],
-    ["https://github.com/", "Github"],
+    ["#", "Github"],
   ];
   const contacts = [
     [TG_URL, "Telegram"],

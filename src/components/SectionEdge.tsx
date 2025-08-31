@@ -1,193 +1,175 @@
-// components/SectionEdge.tsx
-import Image from "next/image";
-import React from "react";
+"use client";
+import React, { ReactNode } from "react";
 import BrandPill from "./ui/BrandPill";
+import { PiWebhooksLogoFill, PiLightbulbFilamentFill } from "react-icons/pi";
+import { LuCrosshair } from "react-icons/lu";
+import { MdRocketLaunch } from "react-icons/md";
+import { motion } from "framer-motion";
 
 const GRAD = "[background:linear-gradient(135deg,#2A61FC_0%,#82F3FD_100%)]";
+const H = 210;
+const TOP = 60;
 
-function TopBadge({
-  children,
-  className = "",
-}: React.PropsWithChildren<{ className?: string }>) {
+function Card({
+  title,
+  desc,
+  icon,
+  index,
+}: {
+  title: string;
+  desc: string;
+  icon: ReactNode;
+  index: number;
+}) {
   return (
-    <div
-      className={`absolute z-10 grid h-12 w-12 place-content-center rounded-full ring-1 ring-white/45 shadow-[0_10px_32px_rgba(56,189,248,.35)] ${GRAD} ${className}`}
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.2, duration: 0.6, ease: "easeOut" }}
+      className="relative mx-auto w-full max-w-[420px] rounded-3xl overflow-visible bg-[#0d0c16]"
     >
-      {children}
-    </div>
-  );
-}
-
-function Card({ title, desc }: { title: string; desc: string }) {
-  return (
-    <div className="relative mx-auto w-full max-w-[420px] rounded-3xl overflow-hidden">
-      <div className="rounded-3xl p-[1px] [background:linear-gradient(180deg,rgba(255,255,255,.32),rgba(153,153,153,.10))]">
-        <div
-          className="relative rounded-3xl px-7 py-8 text-white/90 shadow-[0_16px_44px_rgba(2,10,28,.45)]
-                        [background:linear-gradient(180deg,#0B1630_0%,#0A1834_100%)]"
+      {/* Badge */}
+      <div className="absolute left-1/2 -top-8 -translate-x-1/2 z-10">
+        <motion.div
+          whileHover={{ scale: 1.08, rotate: 5 }}
+          transition={{ type: "spring", stiffness: 250 }}
+          className={`grid h-16 w-16 place-content-center rounded-full ring-1 ring-white/45 shadow-[0_10px_32px_rgba(56,189,248,.35)] ${GRAD}`}
         >
-          <div
-            className="pointer-events-none absolute -right-12 bottom-0 h-48 w-48 rounded-full
-                          bg-[radial-gradient(closest-side,rgba(59,130,246,.35),transparent_70%)]"
-          />
-          <svg
-            className="absolute left-4 top-4 h-3 w-3 text-white/70"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path d="M12 3l2 4 4 2-4 2-2 4-2-4-4-2 4-2 2-4z" />
-          </svg>
-          <svg
-            className="absolute right-4 top-4 h-3 w-3 text-white/70"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path d="M12 3l2 4 4 2-4 2-2 4-2-4-4-2 4-2 2-4z" />
-          </svg>
-          <h4 className="mb-3 text-[22px] font-semibold leading-tight">
+          {icon}
+        </motion.div>
+      </div>
+
+      <div className="rounded-3xl p-[1px] [background:linear-gradient(180deg,rgba(255,255,255,.32),rgba(153,153,153,.10))]">
+        <div className="relative rounded-3xl px-7 pt-12 pb-8 text-white/90 shadow-[0_16px_44px_rgba(2,10,28,.45)] [background:linear-gradient(180deg,#0B1630_0%,#0A1834_100%)] text-center">
+          <div className="pointer-events-none absolute -right-12 bottom-0 h-48 w-48 rounded-full bg-[radial-gradient(closest-side,rgba(59,130,246,.35),transparent_70%)]" />
+          <h4 className="mb-6 text-[22px] font-semibold leading-tight">
             {title}
           </h4>
           <p className="text-sm leading-relaxed text-white/70">{desc}</p>
           <span className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/10" />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 export default function SectionEdge() {
   return (
     <section id="features" className="relative overflow-x-clip p-20">
-      {/* glow nhẹ 2 bên */}
-      <div
-        className="pointer-events-none absolute -left-64 top-10 h-[600px] w-[300px] -z-10 rounded-full blur-[160px] opacity-40"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(42,97,252,.9), rgba(130,243,253,.4))",
-        }}
-      />
-
-      <div
-        className="pointer-events-none absolute -right-64 top-30 h-[600px] w-[300px] -z-10 rounded-full blur-[160px] opacity-40"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(42,97,252,.9), rgba(130,243,253,.4))",
-        }}
-      />
-
       <div className="text-center">
         <BrandPill />
-        <h2 className="mt-4 text-3xl md:text-5xl font-extrabold">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-4 text-3xl md:text-5xl font-extrabold"
+        >
           <span className="bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent">
             Unleash your edge in
           </span>
-        </h2>
-        <p className="mt-2 text-3xl md:text-5xl font-semibold text-white/25">
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="mt-2 text-3xl md:text-5xl font-semibold text-white/25"
+        >
           every trade
-        </p>
+        </motion.p>
       </div>
 
       <div className="relative mx-auto mt-14 max-w-6xl px-6">
+        {/* Connector */}
         <div className="relative h-[210px]">
-          <svg
-            className="absolute inset-0"
-            viewBox="0 0 1000 210"
-            preserveAspectRatio="none"
+          {/* ripple + icon giữa */}
+          <motion.div
+            className="absolute left-1/2 top-[60px] -translate-x-1/2 -translate-y-1/2"
+            initial={{ scale: 0, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
           >
-            <path
-              d="M500 60 H 330 Q 260 60 260 120 V 170"
-              stroke="rgba(255,255,255,0.15)"
-              strokeWidth="2"
-              fill="none"
-            />
-            <path
-              d="M500 60 H 670 Q 740 60 740 120 V 170"
-              stroke="rgba(255,255,255,0.15)"
-              strokeWidth="2"
-              fill="none"
-            />
-            <path
-              d="M500 60 V 170"
-              stroke="rgba(255,255,255,0.15)"
-              strokeWidth="2"
-              fill="none"
-            />
-            <line
-              x1="120"
-              y1="60"
-              x2="880"
-              y2="60"
-              stroke="rgba(255,255,255,0.10)"
-              strokeWidth="1"
-            />
-          </svg>
-
-          <div className="absolute left-1/2 top-[60px] -translate-x-1/2 -translate-y-1/2">
-            <div
-              className="relative h-16 w-16 rounded-full ring-1 ring-white/40 grid place-content-center"
+            <motion.div
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+              className="relative h-24 w-24 rounded-full ring-1 ring-white/30 grid place-content-center"
               style={{
                 background:
                   "radial-gradient(closest-side, rgba(130,243,253,.35), transparent 70%)",
               }}
             >
               <div
-                className={`h-10 w-10 rounded-full ${GRAD} ring-1 ring-white/60 grid place-content-center`}
+                className={`h-20 w-20 rounded-full ${GRAD} ring-1 ring-white/24 grid place-content-center`}
               >
-                <svg
-                  className="h-4 w-4 text-white"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0-5v3M12 19v3M2 12h3M19 12h3" />
-                </svg>
+                <LuCrosshair size={32} />
               </div>
-              <span className="pointer-events-none absolute inset-[-8px] rounded-full ring-1 ring-white/18" />
-              <span className="pointer-events-none absolute inset-[-14px] rounded-full ring-1 ring-white/12" />
-              <span className="pointer-events-none absolute inset-[-20px] rounded-full ring-1 ring-white/8" />
-            </div>
-          </div>
+              {[6, 12, 18, 24, 30].map((d, i) => (
+                <motion.span
+                  key={i}
+                  className="pointer-events-none absolute rounded-full ring-1 ring-white/10"
+                  style={{ inset: -d }}
+                  animate={{ opacity: [0.6, 0], scale: [1, 1.3] }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 3,
+                    delay: i * 0.5,
+                    ease: "easeOut",
+                  }}
+                />
+              ))}
+            </motion.div>
+          </motion.div>
 
-          <TopBadge className="left-[26%] top-[170px] -translate-x-1/2 -translate-y-1/2">
-            <svg
-              className="h-5 w-5 text-white"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M10 3h4v6h-4zM5 12h14v9H5z" />
-            </svg>
-          </TopBadge>
-          <TopBadge className="left-1/2 top-[170px] -translate-x-1/2 -translate-y-1/2">
-            <svg
-              className="h-5 w-5 text-white"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="m2 21 9-4 9 4-9-18-9 18Z" />
-            </svg>
-          </TopBadge>
-          <TopBadge className="left-[74%] top-[170px] -translate-x-1/2 -translate-y-1/2">
-            <svg
-              className="h-5 w-5 text-white"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M12 2a7 7 0 1 1 0 14 7 7 0 0 1 0-14Z" />
-            </svg>
-          </TopBadge>
+          {/* 3 connector lines */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 h-full">
+            {[
+              "M 100 60 Q 50 60 50 170 V 210",
+              "M 50 60 V 210",
+              "M 0 60 Q 50 60 50 170 V 210",
+            ].map((d, i) => (
+              <motion.svg
+                key={i}
+                className="hidden md:block h-full w-full"
+                viewBox={`0 0 100 ${H}`}
+                preserveAspectRatio="none"
+              >
+                <motion.path
+                  d={d}
+                  stroke="rgba(255,255,255,0.15)"
+                  strokeWidth="2"
+                  fill="none"
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.2, delay: 0.3 * i }}
+                />
+              </motion.svg>
+            ))}
+          </div>
         </div>
 
-        <div className="relative z-10 grid grid-cols-1 gap-8 pt-6 md:grid-cols-3">
+        {/* Cards */}
+        <div className="relative z-10 grid grid-cols-1 gap-8 md:grid-cols-3">
           <Card
+            index={0}
             title="Advanced Tools For Smart Traders"
             desc="Stay ahead with live charts, wallet tracking, and instant trade insights."
+            icon={<PiLightbulbFilamentFill size={28} />}
           />
           <Card
+            index={1}
             title="Ultra Sniper using Private Nodes"
             desc="Experience lightning speed with private nodes — secure, stealthy, unstoppable."
+            icon={<MdRocketLaunch size={28} />}
           />
           <Card
+            index={2}
             title="Seamless Trading, Maximum Control"
             desc="Cutting-edge tech for effortless, reliable, and profitable trading."
+            icon={<PiWebhooksLogoFill size={28} />}
           />
         </div>
       </div>
