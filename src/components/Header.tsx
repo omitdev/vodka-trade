@@ -99,7 +99,7 @@ export default function Header() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label="Toggle menu"
-          className="md:hidden grid h-10 w-10 place-content-center rounded-xl ring-1 ring-white/15 text-white"
+          className="md:hidden grid h-10 w-10 z-[60] place-content-center rounded-xl ring-1 ring-white/15 text-white"
         >
           <MdMenu className={open ? "hidden" : "h-6 w-6"} />
           <MdClose className={open ? "h-6 w-6" : "hidden"} />
