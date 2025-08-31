@@ -1,17 +1,25 @@
+"use client";
 import Image from "next/image";
 import BrandPill from "./ui/BrandPill";
+import { motion } from "framer-motion";
 
 function Card({
   title,
   desc,
   bg,
+  index,
 }: {
   title: string;
   desc: string;
   bg: string;
+  index: number;
 }) {
   return (
-    <figure
+    <motion.figure
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
       className="group relative h-[222px] w-[240px] overflow-hidden rounded-2xl bg-[#0d0c16]
                  transition-transform duration-300 ease-out will-change-transform hover:cursor-pointer
                  hover:-translate-y-1 hover:scale-[1.02] focus-within:-translate-y-1 focus-within:scale-[1.02]"
@@ -39,7 +47,7 @@ function Card({
         </h4>
         <p className="text-[13px] leading-relaxed text-white">{desc}</p>
       </figcaption>
-    </figure>
+    </motion.figure>
   );
 }
 
@@ -98,7 +106,13 @@ export default function SectionToolkit() {
       {/* lớp tối để chữ dễ đọc (tuỳ chỉnh opacity) */}
       <div className="absolute inset-0 -z-20 bg-[#0d0c16]" />
 
-      <div className="text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="text-center"
+      >
         <BrandPill />
         <h2 className="mt-4 text-3xl md:text-5xl font-extrabold">
           <span className="bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent">
@@ -108,17 +122,17 @@ export default function SectionToolkit() {
         <p className="mt-2 text-3xl md:text-5xl font-semibold text-white/25">
           on TON
         </p>
-      </div>
+      </motion.div>
 
       <div className="mx-auto mt-12 max-w-6xl px-6">
         <div className="mx-auto w-fit grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-          {top.map((c) => (
-            <Card key={c.title} {...c} />
+          {top.map((c, i) => (
+            <Card key={c.title} {...c} index={i} />
           ))}
         </div>
         <div className="mx-auto mt-5 w-fit grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {bottom.map((c) => (
-            <Card key={c.title} {...c} />
+          {bottom.map((c, i) => (
+            <Card key={c.title} {...c} index={i + 4} />
           ))}
         </div>
       </div>
