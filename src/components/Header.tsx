@@ -75,19 +75,27 @@ export default function Header() {
 
         {/* CTA */}
         <div className="ml-4">
-          <span
-            className="inline-flex rounded-full p-[1px]
-               [background:linear-gradient(180deg,rgba(255,255,255,.32),rgba(153,153,153,.10))]"
-          >
+          <span className="inline-flex rounded-full p-[1px] [background:linear-gradient(180deg,rgba(255,255,255,.32),rgba(153,153,153,.10))]">
             <a
               href={BOT_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-sans inline-flex items-center gap-2 rounded-full px-4 py-2
-                 text-sm font-semibold text-white shadow transition
-                 hover:-translate-y-0.5 hover:shadow-[0_12px_34px_rgba(37,99,235,.45)]
-                 [background:linear-gradient(135deg,#2A61FC_0%,#82F3FD_100%)]"
+              className="relative inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white
+                 transition-all duration-300 ease-out outline-none
+                 [background:linear-gradient(135deg,#2A61FC_0%,#82F3FD_100%)]
+                 hover:[background:linear-gradient(135deg,#3A71FF_0%,#9EF7FF_100%)]
+                 shadow-[0_8px_26px_rgba(37,99,235,.35)]
+                 hover:shadow-[0_16px_40px_rgba(37,99,235,.55)]
+                 hover:-translate-y-0.5 active:translate-y-0
+                 focus-visible:ring-2 focus-visible:ring-sky-300/60
+                 overflow-hidden"
             >
+              {/* sheen chạy ngang khi hover */}
+              <span
+                className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 -skew-x-12
+                       bg-white/20 blur-sm transition-transform duration-700
+                       hover:translate-x-[220%]"
+              />
               <MdRocketLaunch className="h-5 w-5" />
               Get Started
             </a>
