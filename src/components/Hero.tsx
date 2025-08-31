@@ -3,6 +3,7 @@ import Link from "next/link";
 import { GrLinkNext } from "react-icons/gr";
 import { MdRocketLaunch } from "react-icons/md";
 import { PiBookFill } from "react-icons/pi";
+import Starfield from "./ui/Starfield";
 
 export default function Hero() {
   const BOT_URL = "https://t.me/VodkaTradeBot?start";
@@ -13,6 +14,8 @@ export default function Hero() {
       id="home"
       className="relative isolate flex min-h-[92vh] items-center justify-center overflow-hidden pt-16 text-center"
     >
+      <Starfield />
+
       {/* BG */}
       <Image
         src="/hero-bg.png"
