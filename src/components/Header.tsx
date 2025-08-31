@@ -4,6 +4,13 @@ import { MdRocketLaunch } from "react-icons/md";
 
 export default function Header() {
   const BOT_URL = "https://t.me/VodkaTradeBot?start";
+  const CHAT_URL = "https://t.me/VodkaTradeBot_Chat";
+
+  const navItem =
+    "relative z-10 rounded-full px-3 py-1 text-sm font-medium text-white/80 hover:text-white " +
+    "transition-colors duration-200 " +
+    "hover:bg-white/5 hover:ring-1 hover:ring-white/15 " +
+    "after:absolute after:left-2 after:right-2 after:-bottom-0.5 after:h-px after:scale-x-0 after:bg-white/50 after:transition-transform after:duration-200 hover:after:scale-x-100";
 
   return (
     <header className="fixed top-0 w-full z-50 bg-transparent">
@@ -22,23 +29,21 @@ export default function Header() {
 
         {/* Nav */}
         <nav className="hidden md:block">
-          {/* viền gradient */}
           <div
             className="relative inline-flex rounded-full p-[1px]
                [background:linear-gradient(180deg,rgba(255,255,255,.32),rgba(153,153,153,.10))]
                shadow-[0_14px_34px_rgba(2,10,28,.55)]"
           >
-            {/* thân pill */}
             <div
-              className="relative flex items-center gap-10 rounded-full px-10 py-2 text-white/90
+              className="relative flex items-center gap-4 rounded-full px-6 py-2 text-white/90
                  [background:linear-gradient(180deg,#102544_0%,#0A1A32_100%)]"
             >
-              {/* highlight xanh tập trung giữa (gần “Features”) */}
+              {/* highlight xanh */}
               <span
                 className="pointer-events-none absolute inset-0 rounded-full opacity-80
                    [background:radial-gradient(130px_70px_at_95%_90%,rgba(34,76,253,.65),rgba(34,76,253,.18)_60%,transparent_70%)]"
               />
-              {/* gloss nhẹ phía trên */}
+              {/* gloss */}
               <span
                 className="pointer-events-none absolute inset-0 rounded-full
                    [background:linear-gradient(180deg,rgba(255,255,255,.08),transparent_35%)]"
@@ -46,36 +51,29 @@ export default function Header() {
               {/* inner stroke */}
               <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-white/10" />
 
-              <Link
-                href="#home"
-                className="relative text-md font-thin hover:text-white"
-              >
+              <Link href="#home" className={navItem}>
                 Home
               </Link>
-              <Link
-                href="#about"
-                className="relative text-md font-thin hover:text-white"
-              >
+              <Link href="#about" className={navItem}>
                 About
               </Link>
-              <Link
-                href="#features"
-                className="relative text-md font-thin hover:text-white"
-              >
+              <Link href="#features" className={navItem}>
                 Features
               </Link>
-              <Link
-                href="#contact"
-                className="relative text-md font-thin hover:text-white"
+              {/* Contact -> Telegram chat */}
+              <a
+                href={CHAT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={navItem}
               >
                 Contact
-              </Link>
+              </a>
             </div>
           </div>
         </nav>
 
-        {/* CTA → Telegram bot (gradient #2A61FC → #82F3FD + icon) */}
-        {/* CTA → Telegram bot với BORDER GRADIENT */}
+        {/* CTA */}
         <div className="ml-4">
           <span
             className="inline-flex rounded-full p-[1px]
@@ -86,7 +84,8 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-4 py-2
-                 text-sm font-semibold text-white shadow transition hover:opacity-90
+                 text-sm font-semibold text-white shadow transition
+                 hover:-translate-y-0.5 hover:shadow-[0_12px_34px_rgba(37,99,235,.45)]
                  [background:linear-gradient(135deg,#2A61FC_0%,#82F3FD_100%)]"
             >
               <MdRocketLaunch className="h-5 w-5" />
@@ -96,7 +95,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* hairline under header */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-white/25" />
     </header>
   );

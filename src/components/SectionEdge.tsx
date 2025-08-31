@@ -57,7 +57,7 @@ function Card({ title, desc }: { title: string; desc: string }) {
 
 export default function SectionEdge() {
   return (
-    <section id="features" className="relative overflow-x-clip">
+    <section id="features" className="relative overflow-x-clip p-20">
       {/* glow nhẹ 2 bên */}
       <div
         className="pointer-events-none absolute -left-64 top-10 h-[600px] w-[300px] -z-10 rounded-full blur-[160px] opacity-40"

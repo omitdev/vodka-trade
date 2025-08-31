@@ -1,9 +1,12 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { GrLinkNext } from "react-icons/gr";
+import { MdRocketLaunch } from "react-icons/md";
+import { PiBookFill } from "react-icons/pi";
 
 export default function Hero() {
   const BOT_URL = "https://t.me/VodkaTradeBot?start";
+  const DOCS_URL = "https://vodkatrade.gitbook.io/vodkatrade-docs/";
 
   return (
     <section
@@ -16,10 +19,10 @@ export default function Hero() {
         alt=""
         fill
         priority
+        fetchPriority="high"
         sizes="100vw"
-        // className="-z-10 object-cover object-top"
+        quality={70}
         className="absolute -z-10 object-cover"
-        // style={{ inset: "-1px" }}
       />
 
       {/* Content shifted up */}
@@ -34,27 +37,78 @@ export default function Hero() {
         </p>
 
         <div className="mt-10 flex items-center justify-center gap-4">
+          {/* Primary CTA */}
           <a
             href={BOT_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sky-400 to-blue-600 px-5 py-3 text-sm font-medium text-white shadow-lg shadow-blue-600/25"
+            className="group relative inline-flex items-center gap-2 rounded-full
+                       bg-gradient-to-r from-sky-400 to-blue-600 px-5 py-3 text-sm font-medium text-white
+                       shadow-lg shadow-blue-600/25 transition-all duration-200 ease-out will-change-transform
+                       [background-size:200%_100%] hover:[background-position:100%_0%]
+                       hover:-translate-y-0.5 hover:shadow-[0_12px_34px_rgba(37,99,235,.45)] focus:outline-none
+                       focus-visible:ring-2 focus-visible:ring-sky-300/70"
           >
-            Start Trading Now!
-            <svg width="16" height="16" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M13 5l7 7-7 7v-4H4v-6h9V5Z" />
-            </svg>
+            {/* sheen */}
+            <span
+              className="pointer-events-none absolute inset-0 rounded-full opacity-0 transition-opacity duration-200
+                         [background:linear-gradient(180deg,rgba(255,255,255,.14),transparent_40%)]
+                         group-hover:opacity-100"
+            />
+            <MdRocketLaunch className="h-5 w-5" />
+            <span className="relative">Start Trading Now!</span>
+            <GrLinkNext className="h-4 w-4 opacity-80" />
           </a>
 
-          <Link
-            href="#docs"
-            className="inline-flex items-center gap-2 rounded-full bg-[#0b0e1a]/80 px-5 py-3 text-sm font-medium text-white/90 ring-1 ring-white/10"
+          {/* Secondary CTA */}
+          <a
+            href={DOCS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative rounded-full p-[1px]
+             [background:linear-gradient(180deg,rgba(255,255,255,.32),rgba(153,153,153,.10))]
+             transition-all duration-200 hover:-translate-y-0.5
+             hover:shadow-[0_16px_40px_rgba(2,10,28,.6)]"
           >
-            Open Docs
-            <svg width="16" height="16" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M10 17l5-5-5-5v10Z" />
-            </svg>
-          </Link>
+            <span
+              className="relative isolate inline-flex items-center gap-2 rounded-full px-5 py-3
+               text-sm font-medium text-white ring-1 ring-white/10
+               transition-colors duration-200 group-hover:ring-white/20"
+              style={{
+                background: "linear-gradient(180deg,#102544 0%,#0A1A32 100%)",
+              }}
+            >
+              {/* highlight xanh base */}
+              <span
+                className="pointer-events-none absolute inset-0 rounded-full opacity-80 transition-opacity duration-200"
+                style={{
+                  background:
+                    "radial-gradient(130px 70px at 100% 95%, rgba(34,76,253,.65), rgba(34,76,253,.18) 50%, transparent 60%)",
+                }}
+              />
+              {/* glow khi hover */}
+              <span
+                className="pointer-events-none absolute inset-0 rounded-full opacity-0 transition-opacity duration-200
+                 group-hover:opacity-100"
+                style={{
+                  background:
+                    "radial-gradient(220px 120px at 80% 50%, rgba(130,243,253,.22), transparent 70%)",
+                }}
+              />
+              {/* gloss */}
+              <span
+                className="pointer-events-none absolute inset-0 rounded-full"
+                style={{
+                  background:
+                    "linear-gradient(180deg,rgba(255,255,255,.08),transparent 35%)",
+                }}
+              />
+
+              <PiBookFill className="h-5 w-5" />
+              <span className="relative">Open Docs</span>
+              <GrLinkNext className="h-4 w-4 opacity-80" />
+            </span>
+          </a>
         </div>
       </div>
     </section>

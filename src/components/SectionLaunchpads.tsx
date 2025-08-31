@@ -12,6 +12,8 @@ const BADGES: Badge[] = [
   { alt: "Memes Lab", src: "/partners/lab.png", angle: 20, ring: 2 },
 ];
 
+const BOT_URL = "https://t.me/VodkaTradeBot?start";
+
 export default function SectionLaunchpads() {
   return (
     <section
@@ -50,7 +52,9 @@ export default function SectionLaunchpads() {
 
           <div className="mt-6">
             <a
-              href="#integrations"
+              href={BOT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className={`inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold text-white ring-1 ring-white/30 shadow ${BTN}`}
             >
               More Details
@@ -86,7 +90,7 @@ export default function SectionLaunchpads() {
           />
 
           {/* Ảnh tràn ra ngoài bên phải */}
-          <div className="pointer-events-none absolute -right-4 top-3/5 z-10 h-[240px] w-[420px] -translate-y-1/2">
+          <div className="pointer-events-none absolute left-4 top-3/5 z-10 h-[140px] w-[240px] sm:h-[240px] sm:w-[420px] sm:left-auto sm:-right-4 -translate-y-1/2">
             <Image
               src="/illus/referral.png"
               alt="Referral Illustration"
