@@ -28,7 +28,7 @@ export default function Header() {
         </div>
 
         {/* Nav */}
-        <nav className="hidden md:block">
+        <nav className="hidden md:block font-sans">
           <div
             className="relative inline-flex rounded-full p-[1px]
                [background:linear-gradient(180deg,rgba(255,255,255,.32),rgba(153,153,153,.10))]
@@ -83,7 +83,7 @@ export default function Header() {
               href={BOT_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full px-4 py-2
+              className="font-sans inline-flex items-center gap-2 rounded-full px-4 py-2
                  text-sm font-semibold text-white shadow transition
                  hover:-translate-y-0.5 hover:shadow-[0_12px_34px_rgba(37,99,235,.45)]
                  [background:linear-gradient(135deg,#2A61FC_0%,#82F3FD_100%)]"

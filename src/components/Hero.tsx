@@ -56,7 +56,7 @@ export default function Hero() {
                          group-hover:opacity-100"
             />
             <MdRocketLaunch className="h-5 w-5" />
-            <span className="relative">Start Trading Now!</span>
+            <span className="relative font-sans">Start Trading Now!</span>
             <GrLinkNext className="h-4 w-4 opacity-80" />
           </a>
 
@@ -105,7 +105,7 @@ export default function Hero() {
               />
 
               <PiBookFill className="h-5 w-5" />
-              <span className="relative">Open Docs</span>
+              <span className="relative font-sans">Open Docs</span>
               <GrLinkNext className="h-4 w-4 opacity-80" />
             </span>
           </a>
